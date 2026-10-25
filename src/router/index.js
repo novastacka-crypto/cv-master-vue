@@ -9,6 +9,11 @@ const routes = [
   { path: '/builder', name: 'Builder', component: Builder },
   { path: '/templates', name: 'Templates', component: Templates },
   { path: '/templates/:id', name: 'TemplateDetail', component: TemplateDetail },
+  {
+    path: '/account',
+    name: 'Account',
+    component: () => import('../views/Account.vue'),
+  },
 ]
 
 export default createRouter({

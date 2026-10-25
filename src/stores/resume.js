@@ -57,8 +57,8 @@ export const useResumeStore = defineStore('resume', () => {
   watch(photo, (v) => localStorage.setItem('cv_photo', JSON.stringify(v)))
   watch(resumeData, (v) => localStorage.setItem('cv_resumeData', JSON.stringify(v)), { deep: true })
 
-  function exportJSON() {
-    const payload = {
+  function getSnapshot() {
+    return {
       fullName: fullName.value,
       email: email.value,
       phone: phone.value,
@@ -70,6 +70,32 @@ export const useResumeStore = defineStore('resume', () => {
       lang: lang.value,
       resumeData: resumeData.value,
     }
+  }
+
+  function applySnapshot(payload) {
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+      throw new TypeError('Resume data must be a JSON object.')
+    }
+
+    fullName.value = payload.fullName || ''
+    email.value = payload.email || ''
+    phone.value = payload.phone || ''
+    portfolio.value = payload.portfolio || ''
+    github.value = payload.github || ''
+    photo.value = payload.photo || ''
+    if (payload.accentColor) setAccentColor(payload.accentColor)
+    if (payload.theme) setTheme(payload.theme)
+    if (payload.lang) setLang(payload.lang)
+    resumeData.value =
+      payload.resumeData &&
+      typeof payload.resumeData === 'object' &&
+      !Array.isArray(payload.resumeData)
+        ? payload.resumeData
+        : {}
+  }
+
+  function exportJSON() {
+    const payload = getSnapshot()
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -85,16 +111,7 @@ export const useResumeStore = defineStore('resume', () => {
       reader.onload = (e) => {
         try {
           const d = JSON.parse(e.target.result)
-          fullName.value = d.fullName || ''
-          email.value = d.email || ''
-          phone.value = d.phone || ''
-          portfolio.value = d.portfolio || ''
-          github.value = d.github || ''
-          photo.value = d.photo || ''
-          if (d.accentColor) setAccentColor(d.accentColor)
-          if (d.theme) setTheme(d.theme)
-          if (d.lang) setLang(d.lang)
-          resumeData.value = d.resumeData || {}
+          applySnapshot(d)
           resolve(true)
         } catch (err) {
           reject(err)
@@ -122,5 +139,6 @@ export const useResumeStore = defineStore('resume', () => {
     fullName, email, phone, portfolio, github, photo,
     accentColor, theme, lang, resumeData, sections,
     setAccentColor, setTheme, setLang, exportJSON, importJSON, resetAll,
+    getSnapshot, applySnapshot,
   }
 })

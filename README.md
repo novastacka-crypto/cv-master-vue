@@ -30,6 +30,31 @@ npm install
 npm run dev
 ```
 
+## Cloud backups and deployment
+
+The builder remains usable without an account and keeps a local copy in the
+browser. Supabase is optional and provides email/password accounts plus
+user-private cloud backup and restore.
+
+1. Create a Supabase project and run
+   [`supabase/migrations/20261025000000_create_user_resumes.sql`](./supabase/migrations/20261025000000_create_user_resumes.sql)
+   in the Supabase SQL Editor.
+2. Copy `.env.example` to `.env.local` and set `VITE_SUPABASE_URL` and
+   `VITE_SUPABASE_ANON_KEY` to the Supabase project URL and publishable key.
+   These browser-side values are public; database access is protected by the
+   migration's row-level security policies. Never use a `service_role` key in
+   this frontend.
+3. In Supabase Authentication URL Configuration, set the Site URL and allowed
+   redirect URL to `https://novastacka-crypto.github.io/cv-master-vue/`.
+4. In the GitHub repository, add the same two values as repository Actions
+   variables named `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
+5. Push to `main`. GitHub Actions builds, tests, and deploys the site to
+   [CV Master on GitHub Pages](https://novastacka-crypto.github.io/cv-master-vue/).
+
+Use the Cloud Account link in the builder to create an account. Cloud sync is
+manual: users explicitly choose when to back up or restore a resume. The
+existing browser-local data is not uploaded until the user selects backup.
+
 ## Scripts
 ```bash
 npm run dev          # dev server

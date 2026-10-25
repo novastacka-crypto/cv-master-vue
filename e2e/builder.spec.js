@@ -13,6 +13,19 @@ test("builder: open the page from the main navigation", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("builder: opens the cloud account page", async ({ page }) => {
+  await page.goto("/#/builder");
+  await page.getByRole("link", { name: "Cloud Account" }).click();
+
+  await expect(page).toHaveURL(/#\/account$/);
+  await expect(
+    page.getByRole("heading", { name: "Your cloud account" }),
+  ).toBeVisible();
+  await expect(page.getByRole("status")).toContainText(
+    "Cloud storage is not configured yet",
+  );
+});
+
 test("builder: opens when stored resume data is invalid", async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem("cv_resumeData", "null");

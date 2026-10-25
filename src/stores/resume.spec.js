@@ -51,4 +51,26 @@ describe('useResumeStore', () => {
     expect(store.resumeData.profile).toHaveLength(1)
     expect(store.resumeData.profile[0].summary).toBe('Hello')
   })
+
+  it('exports and restores a complete resume snapshot', () => {
+    const store = useResumeStore()
+    store.fullName = 'Rana Example'
+    store.email = 'rana@example.com'
+    store.resumeData.profile = [{ summary: 'Designer' }]
+    const snapshot = store.getSnapshot()
+
+    store.fullName = 'Another Person'
+    store.applySnapshot(snapshot)
+
+    expect(store.fullName).toBe('Rana Example')
+    expect(store.email).toBe('rana@example.com')
+    expect(store.resumeData.profile[0].summary).toBe('Designer')
+  })
+
+  it('rejects invalid cloud resume snapshots', () => {
+    const store = useResumeStore()
+    expect(() => store.applySnapshot(null)).toThrow(
+      'Resume data must be a JSON object.',
+    )
+  })
 })

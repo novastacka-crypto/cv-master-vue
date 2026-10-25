@@ -7,6 +7,9 @@
     </div>
     <div class="cv-quickstart">
       <div class="quickstart-actions">
+        <router-link class="cv-import-btn" to="/account">
+          <i class="bi bi-cloud-arrow-up"></i> {{ t("cloudAccount") }}
+        </router-link>
         <button class="cv-import-btn" @click="downloadPDF">
           <i class="bi bi-download"></i> {{ t("downloadPdf") }}
         </button>

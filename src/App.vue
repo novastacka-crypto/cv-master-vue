@@ -32,13 +32,16 @@ function setMetaContent(selector, content) {
 }
 
 function updatePageMetadata() {
-  const page = route.name === "Builder"
-    ? "builder"
-    : route.name === "Templates"
-      ? "templates"
-      : route.name === "TemplateDetail"
-        ? "templateDetail"
-        : "home";
+  const page =
+    route.name === "Builder"
+      ? "builder"
+      : route.name === "Templates"
+        ? "templates"
+        : route.name === "TemplateDetail"
+          ? "templateDetail"
+          : route.name === "Account"
+            ? "account"
+            : "home";
   const title = t(`seo${page[0].toUpperCase()}${page.slice(1)}Title`);
   const description = t(`seo${page[0].toUpperCase()}${page.slice(1)}Description`);
 
