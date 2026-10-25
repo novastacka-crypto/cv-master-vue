@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classic Template | CV Master</title>
+    <link rel="icon" href="../assets/img/cv.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="../assets/js/i18n.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+      .template-main {
+        max-width: 1300px;
+        margin: 60px auto;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(248, 248, 248, 0.95) 100%
+        );
+        border-radius: 24px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 50px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      body.dark .template-main {
+        background: linear-gradient(
+          135deg,
+          rgba(15, 15, 15, 0.98) 0%,
+          rgba(25, 25, 25, 0.95) 100%
+        );
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .template-form {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .template-preview {
+        background: #fafafa;
+        border-radius: 14px;
+        padding: 32px;
+        border-left: 6px solid #000;
+        max-height: 70vh;
+        overflow-y: auto;
+        position: relative;
+      }
+
+      body.dark .template-preview {
+        background: rgba(30, 30, 30, 0.8);
+        border-left-color: #fff;
+      }
+
+      .header-info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding-bottom: 24px;
+        border-bottom: 2px solid #000;
+      }
+
+      body.dark .header-info {
+        border-bottom-color: #fff;
+      }
+
+      .header-info-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 12px;
+      }
+
+      .info-input {
+        padding: 12px 14px;
+        border: 2px solid #000;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        background: white;
+        color: #000;
+      }
+
+      body.dark .info-input {
+        background: rgba(50, 50, 50, 0.6);
+        border-color: #fff;
+        color: #fff;
+      }
+
+      .info-input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-section-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .form-section-title {
+        font-weight: 700;
+        color: #000;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-left: 12px;
+        border-left: 4px solid #000;
+      }
+
+      body.dark .form-section-title {
+        color: #fff;
+        border-left-color: #fff;
+      }
+
+      .entries-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .entry-item {
+        background: white;
+        border: 2px solid #000;
+        border-radius: 8px;
+        padding: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      body.dark .entry-item {
+        background: rgba(50, 50, 50, 0.6);
+        border-color: #fff;
+      }
+
+      .entry-item:hover {
+        background: #000;
+        color: white;
+      }
+
+      body.dark .entry-item:hover {
+        background: #fff;
+        color: #000;
+      }
+
+      .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .entry-title {
+        font-weight: 600;
+        color: inherit;
+      }
+
+      .entry-remove {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+      }
+
+      body.dark .entry-remove {
+        background: #fff;
+        color: #000;
+      }
+
+      .entry-remove:hover {
+        opacity: 0.8;
+      }
+
+      .add-btn {
+        background: #000;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        width: 100%;
+      }
+
+      body.dark .add-btn {
+        background: #fff;
+        color: #000;
+      }
+
+      .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .download-btn {
+        background: linear-gradient(135deg, #000 0%, #333 100%);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      body.dark .download-btn {
+        background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+        color: #000;
+      }
+
+      .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(6px);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-left: 6px solid #000;
+      }
+
+      body.dark .modal {
+        background: rgba(25, 25, 25, 0.98);
+        border-left-color: #fff;
+        color: #fff;
+      }
+
+      .modal-header {
+        padding: 24px;
+        border-bottom: 2px solid #000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      body.dark .modal-header {
+        border-bottom-color: #fff;
+      }
+
+      .modal-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #000;
+        margin: 0;
+      }
+
+      body.dark .modal-title {
+        color: #fff;
+      }
+
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 1.6rem;
+        color: #000;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      body.dark .modal-close {
+        color: #fff;
+      }
+
+      .modal-content {
+        padding: 24px;
+      }
+
+      .modal-field {
+        margin-bottom: 18px;
+      }
+
+      .modal-field label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #000;
+      }
+
+      body.dark .modal-field label {
+        color: #fff;
+      }
+
+      .modal-field input,
+      .modal-field textarea,
+      .modal-field select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 2px solid #000;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 1rem;
+        background: white;
+        color: #000;
+      }
+
+      body.dark .modal-field input,
+      body.dark .modal-field textarea,
+      body.dark .modal-field select {
+        background: rgba(50, 50, 50, 0.6);
+        border-color: #fff;
+        color: #fff;
+      }
+
+      .modal-field textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        padding-top: 20px;
+        border-top: 2px solid #000;
+      }
+
+      body.dark .modal-actions {
+        border-top-color: #fff;
+      }
+
+      .modal-btn {
+        flex: 1;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .modal-btn-save {
+        background: #000;
+        color: white;
+      }
+
+      body.dark .modal-btn-save {
+        background: #fff;
+        color: #000;
+      }
+
+      .modal-btn-cancel {
+        background: #e0e0e0;
+        color: #000;
+      }
+
+      body.dark .modal-btn-cancel {
+        background: rgba(100, 100, 100, 0.5);
+        color: #fff;
+      }
+
+      .preview-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 12px;
+        text-align: center;
+        border-bottom: 2px solid #000;
+        padding-bottom: 12px;
+      }
+
+      body.dark .preview-name {
+        color: #fff;
+        border-bottom-color: #fff;
+      }
+
+      .preview-contact {
+        text-align: center;
+        font-size: 0.9rem;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      body.dark .preview-contact {
+        color: #ccc;
+      }
+
+      .preview-section {
+        margin-bottom: 24px;
+      }
+
+      .preview-section-title {
+        font-weight: 700;
+        color: #000;
+        font-size: 1rem;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #000;
+        padding-left: 8px;
+        border-left: 4px solid #000;
+      }
+
+      body.dark .preview-section-title {
+        color: #fff;
+        border-color: #fff;
+      }
+
+      .preview-entry {
+        margin-bottom: 12px;
+        font-size: 0.9rem;
+        color: #333;
+      }
+
+      body.dark .preview-entry {
+        color: #ccc;
+      }
+
+      #pdfContent {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .template-main {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .template-preview {
+          max-height: none;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="../assets/css/template-refresh.css" />
+    <script type="module" src="../assets/js/site-chrome.js"></script>
+  </head>
+  <body>
+    <cv-site-header base="../index.html"></cv-site-header>
+    <main>
+      <div class="template-main">
+        <div class="template-form">
+          <button class="download-btn" onclick="downloadAsPDF()">
+            <i class="bi bi-download"></i>
+            <span data-i18n="downloadAsPdf">Download as PDF</span>
+          </button>
+          <div class="header-info">
+            <input
+              type="text"
+              class="info-input"
+              id="fullName"
+              placeholder="Full Name"
+              style="font-size: 1.3rem; font-weight: 700; text-align: center"
+            />
+            <div class="header-info-row">
+              <input
+                type="tel"
+                class="info-input"
+                id="phone"
+                placeholder="Phone Number"
+              />
+              <input
+                type="email"
+                class="info-input"
+                id="email"
+                placeholder="Email Address"
+              />
+              <input
+                type="text"
+                class="info-input"
+                id="address"
+                placeholder="Address"
+              />
+            </div>
+          </div>
+          <!-- Profile -->
+          <div class="form-section-container">
+            <div class="form-section-title">
+              <i class="bi bi-person"></i>
+              <span data-i18n="profile">Profile</span>
+            </div>
+            <textarea
+              class="info-input"
+              id="profileText"
+              rows="3"
+              placeholder="Short professional summary"
+            ></textarea>
+          </div>
+
+          <!-- Professional Experience -->
+          <div class="form-section-container">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div class="form-section-title">
+                <i class="bi bi-briefcase"></i>
+                <span data-i18n="professionalExperience"
+                  >Professional Experience</span
+                >
+              </div>
+              <button
+                class="add-btn"
+                style="width: auto; padding: 8px 16px"
+                onclick="addExperience()"
+              >
+                <i class="bi bi-plus"></i> Add
+              </button>
+            </div>
+            <div class="entries-container" id="expEntries"></div>
+          </div>
+
+          <!-- Education -->
+          <div class="form-section-container">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div class="form-section-title">
+                <i class="bi bi-mortarboard"></i>
+                <span data-i18n="education">Education</span>
+              </div>
+              <button
+                class="add-btn"
+                style="width: auto; padding: 8px 16px"
+                onclick="addEducation()"
+              >
+                <i class="bi bi-plus"></i> Add
+              </button>
+            </div>
+            <div class="entries-container" id="eduEntries"></div>
+          </div>
+
+          <!-- Skills -->
+          <div class="form-section-container">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div class="form-section-title">
+                <i class="bi bi-star"></i>
+                <span data-i18n="skills">Skills</span>
+              </div>
+              <button
+                class="add-btn"
+                style="width: auto; padding: 8px 16px"
+                onclick="addSkill()"
+              >
+                <i class="bi bi-plus"></i> Add
+              </button>
+            </div>
+            <div class="entries-container" id="skillEntries"></div>
+          </div>
+
+          <!-- Languages -->
+          <div class="form-section-container">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <div class="form-section-title">
+                <i class="bi bi-translate"></i>
+                <span data-i18n="languages">Languages</span>
+              </div>
+              <button
+                class="add-btn"
+                style="width: auto; padding: 8px 16px"
+                onclick="addLanguage()"
+              >
+                <i class="bi bi-plus"></i> Add
+              </button>
+            </div>
+            <div class="entries-container" id="langEntries"></div>
+          </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="template-preview" id="preview"></div>
+      </div>
+    </main>
+
+    <!-- PDF Content (Hidden) -->
+    <div id="pdfContent"></div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Add Entry</h2>
+        <button class="modal-close" onclick="closeModal()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-content" id="modalContent"></div>
+      <div class="modal-actions">
+        <button class="modal-btn modal-btn-save" onclick="saveEntry()">
+          Save
+        </button>
+        <button class="modal-btn modal-btn-cancel" onclick="closeModal()">
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <cv-site-footer base="../index.html"></cv-site-footer>
+
+    <script>
+      let data = {
+        fullName: "",
+        phone: "",
+        email: "",
+        address: "",
+        profile: "",
+        experience: [],
+        education: [],
+        skills: [],
+        languages: [],
+      };
+
+      let currentModal = null;
+      let editingIndex = null;
+
+      // Download as PDF
+      function downloadAsPDF() {
+        if (!data.fullName) {
+          alert("Please enter your full name");
+          return;
+        }
+
+        let pdfHTML = `
+        <div style="font-family: Arial, sans-serif; padding: 40px; max-width: 800px; margin: 0 auto;">
+          <div style="border-left: 6px solid #000; padding-left: 20px; margin-bottom: 30px;">
+            <div style="font-size: 28px; font-weight: bold; margin-bottom: 10px;">${data.fullName}</div>
+            <div style="font-size: 12px; color: #333;">
+              ${data.email ? `📧 ${data.email} | ` : ""}
+              ${data.phone ? `📞 ${data.phone}` : ""}
+              ${data.address ? ` | 📍 ${data.address}` : ""}
+            </div>
+          </div>
+      `;
+
+        if (data.profile) {
+          pdfHTML += `
+          <div style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 13px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px;">PROFILE</div>
+            <div style="font-size: 11px; color: #333; line-height: 1.6;">${data.profile}</div>
+          </div>
+        `;
+        }
+
+        if (data.experience.length > 0) {
+          pdfHTML += `
+          <div style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 13px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px;">PROFESSIONAL EXPERIENCE</div>
+        `;
+          data.experience.forEach((exp) => {
+            pdfHTML += `
+            <div style="margin-bottom: 12px; font-size: 11px;">
+              <div style="font-weight: bold;">${exp.title} at ${exp.company}</div>
+              <div style="color: #666;">${exp.start} - ${exp.present ? "Present" : exp.end}</div>
+              ${exp.desc ? `<div style="color: #333; margin-top: 4px;">${exp.desc}</div>` : ""}
+            </div>
+          `;
+          });
+          pdfHTML += `</div>`;
+        }
+
+        if (data.education.length > 0) {
+          pdfHTML += `
+          <div style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 13px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px;">EDUCATION</div>
+        `;
+          data.education.forEach((edu) => {
+            pdfHTML += `
+            <div style="margin-bottom: 12px; font-size: 11px;">
+              <div style="font-weight: bold;">${edu.degree}${edu.field ? ` in ${edu.field}` : ""}</div>
+              <div style="color: #666;">${edu.school}</div>
+              <div style="color: #666;">${edu.start} - ${edu.present ? "Present" : edu.end}${edu.gpa ? ` | GPA: ${edu.gpa}` : ""}</div>
+            </div>
+          `;
+          });
+          pdfHTML += `</div>`;
+        }
+
+        if (data.skills.length > 0) {
+          pdfHTML += `
+          <div style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 13px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px;">SKILLS</div>
+            <div style="font-size: 11px;">
+        `;
+          data.skills.forEach((skill) => {
+            pdfHTML += `<div style="margin-bottom: 6px;">• ${skill.name} <span style="color: #666;">(${skill.level})</span></div>`;
+          });
+          pdfHTML += `</div></div>`;
+        }
+
+        if (data.languages.length > 0) {
+          pdfHTML += `
+          <div style="margin-bottom: 20px;">
+            <div style="font-weight: bold; font-size: 13px; border-left: 4px solid #000; padding-left: 10px; margin-bottom: 10px;">LANGUAGES</div>
+            <div style="font-size: 11px;">
+        `;
+          data.languages.forEach((lang) => {
+            pdfHTML += `<div style="margin-bottom: 6px;">• ${lang.name} <span style="color: #666;">(${lang.level})</span></div>`;
+          });
+          pdfHTML += `</div></div>`;
+        }
+
+        pdfHTML += `</div>`;
+
+        const element = document.createElement("div");
+        element.innerHTML = pdfHTML;
+
+        const opt = {
+          margin: 10,
+          filename: `${data.fullName.replace(/\s+/g, "_")}_CV.pdf`,
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        };
+
+        html2pdf().set(opt).from(element).save();
+      }
+
+      // Header Info Inputs
+      document.getElementById("fullName").addEventListener("input", (e) => {
+        data.fullName = e.target.value;
+        updatePreview();
+      });
+
+      document.getElementById("phone").addEventListener("input", (e) => {
+        data.phone = e.target.value;
+        updatePreview();
+      });
+
+      document.getElementById("email").addEventListener("input", (e) => {
+        data.email = e.target.value;
+        updatePreview();
+      });
+
+      document.getElementById("address").addEventListener("input", (e) => {
+        data.address = e.target.value;
+        updatePreview();
+      });
+
+      document.getElementById("profileText").addEventListener("input", (e) => {
+        data.profile = e.target.value;
+        updatePreview();
+      });
+
+      // Modal Functions
+      function openModal(type, index = null) {
+        currentModal = type;
+        editingIndex = index;
+        const modal = document.getElementById("modal");
+        const overlay = document.getElementById("modalOverlay");
+        const content = document.getElementById("modalContent");
+
+        let fields = "";
+        let title = "";
+
+        if (type === "experience") {
+          title = "Professional Experience";
+          const item = index !== null ? data.experience[index] : {};
+          fields = `
+          <div class="modal-field">
+            <label>Job Title *</label>
+            <input type="text" id="exp_title" value="${item.title || ""}" placeholder="Job Title">
+          </div>
+          <div class="modal-field">
+            <label>Company *</label>
+            <input type="text" id="exp_company" value="${item.company || ""}" placeholder="Company Name">
+          </div>
+          <div class="modal-field">
+            <label>Start Date *</label>
+            <input type="date" id="exp_start" value="${item.start || ""}">
+          </div>
+          <div class="modal-field">
+            <label>End Date</label>
+            <input type="date" id="exp_end" value="${item.end || ""}">
+          </div>
+          <div class="modal-field">
+            <label style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="exp_present" ${item.present ? "checked" : ""}>
+              Currently Working Here
+            </label>
+          </div>
+          <div class="modal-field">
+            <label>Description</label>
+            <textarea id="exp_desc" placeholder="Tasks and achievements">${item.desc || ""}</textarea>
+          </div>
+        `;
+        } else if (type === "education") {
+          title = "Education";
+          const item = index !== null ? data.education[index] : {};
+          fields = `
+          <div class="modal-field">
+            <label>School/University *</label>
+            <input type="text" id="edu_school" value="${item.school || ""}" placeholder="Institution Name">
+          </div>
+          <div class="modal-field">
+            <label>Degree *</label>
+            <input type="text" id="edu_degree" value="${item.degree || ""}" placeholder="Degree">
+          </div>
+          <div class="modal-field">
+            <label>Field</label>
+            <input type="text" id="edu_field" value="${item.field || ""}" placeholder="Field of Study">
+          </div>
+          <div class="modal-field">
+            <label>Start Date *</label>
+            <input type="date" id="edu_start" value="${item.start || ""}">
+          </div>
+          <div class="modal-field">
+            <label>End Date</label>
+            <input type="date" id="edu_end" value="${item.end || ""}">
+          </div>
+          <div class="modal-field">
+            <label style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="edu_present" ${item.present ? "checked" : ""}>
+              Currently Studying
+            </label>
+          </div>
+          <div class="modal-field">
+            <label>GPA</label>
+            <input type="text" id="edu_gpa" value="${item.gpa || ""}" placeholder="3.8">
+          </div>
+        `;
+        } else if (type === "skills") {
+          title = "Skills";
+          const item = index !== null ? data.skills[index] : {};
+          fields = `
+          <div class="modal-field">
+            <label>Skill *</label>
+            <input type="text" id="skill_name" value="${item.name || ""}" placeholder="Skill Name">
+          </div>
+          <div class="modal-field">
+            <label>Level *</label>
+            <select id="skill_level">
+              <option value="Beginner" ${item.level === "Beginner" ? "selected" : ""}>Beginner</option>
+              <option value="Intermediate" ${item.level === "Intermediate" ? "selected" : ""}>Intermediate</option>
+              <option value="Advanced" ${item.level === "Advanced" ? "selected" : ""}>Advanced</option>
+            </select>
+          </div>
+        `;
+        } else if (type === "languages") {
+          title = "Languages";
+          const item = index !== null ? data.languages[index] : {};
+          fields = `
+          <div class="modal-field">
+            <label>Language *</label>
+            <input type="text" id="lang_name" value="${item.name || ""}" placeholder="Language">
+          </div>
+          <div class="modal-field">
+            <label>Level *</label>
+            <select id="lang_level">
+              <option value="Beginner" ${item.level === "Beginner" ? "selected" : ""}>Beginner</option>
+              <option value="Intermediate" ${item.level === "Intermediate" ? "selected" : ""}>Intermediate</option>
+              <option value="Advanced" ${item.level === "Advanced" ? "selected" : ""}>Advanced</option>
+              <option value="Fluent" ${item.level === "Fluent" ? "selected" : ""}>Fluent</option>
+            </select>
+          </div>
+        `;
+        }
+
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalContent").innerHTML = fields;
+        modal.style.display = "block";
+        overlay.style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("modalOverlay").style.display = "none";
+      }
+
+      function saveEntry() {
+        if (currentModal === "experience") {
+          const entry = {
+            title: document.getElementById("exp_title").value,
+            company: document.getElementById("exp_company").value,
+            start: document.getElementById("exp_start").value,
+            end: document.getElementById("exp_end").value,
+            present: document.getElementById("exp_present").checked,
+            desc: document.getElementById("exp_desc").value,
+          };
+          if (!entry.title || !entry.company || !entry.start) {
+            alert("Please fill in required fields");
+            return;
+          }
+          if (editingIndex !== null) {
+            data.experience[editingIndex] = entry;
+          } else {
+            data.experience.push(entry);
+          }
+        } else if (currentModal === "education") {
+          const entry = {
+            school: document.getElementById("edu_school").value,
+            degree: document.getElementById("edu_degree").value,
+            field: document.getElementById("edu_field").value,
+            start: document.getElementById("edu_start").value,
+            end: document.getElementById("edu_end").value,
+            present: document.getElementById("edu_present").checked,
+            gpa: document.getElementById("edu_gpa").value,
+          };
+          if (!entry.school || !entry.degree || !entry.start) {
+            alert("Please fill in required fields");
+            return;
+          }
+          if (editingIndex !== null) {
+            data.education[editingIndex] = entry;
+          } else {
+            data.education.push(entry);
+          }
+        } else if (currentModal === "skills") {
+          const entry = {
+            name: document.getElementById("skill_name").value,
+            level: document.getElementById("skill_level").value,
+          };
+          if (!entry.name || !entry.level) {
+            alert("Please fill in required fields");
+            return;
+          }
+          if (editingIndex !== null) {
+            data.skills[editingIndex] = entry;
+          } else {
+            data.skills.push(entry);
+          }
+        } else if (currentModal === "languages") {
+          const entry = {
+            name: document.getElementById("lang_name").value,
+            level: document.getElementById("lang_level").value,
+          };
+          if (!entry.name || !entry.level) {
+            alert("Please fill in required fields");
+            return;
+          }
+          if (editingIndex !== null) {
+            data.languages[editingIndex] = entry;
+          } else {
+            data.languages.push(entry);
+          }
+        }
+        closeModal();
+        renderEntries();
+        updatePreview();
+      }
+
+      function addExperience() {
+        openModal("experience");
+      }
+
+      function addEducation() {
+        openModal("education");
+      }
+
+      function addSkill() {
+        openModal("skills");
+      }
+
+      function addLanguage() {
+        openModal("languages");
+      }
+
+      function renderEntries() {
+        let expHtml = data.experience
+          .map(
+            (exp, idx) => `
+        <div class="entry-item" onclick="openModal('experience', ${idx})">
+          <div class="entry-header">
+            <div>
+              <div class="entry-title">${exp.title} - ${exp.company}</div>
+              <div style="font-size: 0.85rem; color: #666;">${exp.start} to ${exp.present ? "Present" : exp.end}</div>
+            </div>
+            <button class="entry-remove" onclick="event.stopPropagation(); deleteExperience(${idx})">Delete</button>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+        document.getElementById("expEntries").innerHTML =
+          expHtml ||
+          '<div style="color: #999; text-align: center; padding: 20px;">No entries yet</div>';
+
+        let eduHtml = data.education
+          .map(
+            (edu, idx) => `
+        <div class="entry-item" onclick="openModal('education', ${idx})">
+          <div class="entry-header">
+            <div>
+              <div class="entry-title">${edu.degree} - ${edu.school}</div>
+              <div style="font-size: 0.85rem; color: #666;">${edu.start} to ${edu.present ? "Present" : edu.end}</div>
+            </div>
+            <button class="entry-remove" onclick="event.stopPropagation(); deleteEducation(${idx})">Delete</button>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+        document.getElementById("eduEntries").innerHTML =
+          eduHtml ||
+          '<div style="color: #999; text-align: center; padding: 20px;">No entries yet</div>';
+
+        let skillHtml = data.skills
+          .map(
+            (skill, idx) => `
+        <div class="entry-item" onclick="openModal('skills', ${idx})">
+          <div class="entry-header">
+            <div class="entry-title">${skill.name} (${skill.level})</div>
+            <button class="entry-remove" onclick="event.stopPropagation(); deleteSkill(${idx})">Delete</button>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+        document.getElementById("skillEntries").innerHTML =
+          skillHtml ||
+          '<div style="color: #999; text-align: center; padding: 20px;">No entries yet</div>';
+
+        let langHtml = data.languages
+          .map(
+            (lang, idx) => `
+        <div class="entry-item" onclick="openModal('languages', ${idx})">
+          <div class="entry-header">
+            <div class="entry-title">${lang.name} (${lang.level})</div>
+            <button class="entry-remove" onclick="event.stopPropagation(); deleteLanguage(${idx})">Delete</button>
+          </div>
+        </div>
+      `,
+          )
+          .join("");
+        document.getElementById("langEntries").innerHTML =
+          langHtml ||
+          '<div style="color: #999; text-align: center; padding: 20px;">No entries yet</div>';
+      }
+
+      function deleteExperience(idx) {
+        data.experience.splice(idx, 1);
+        renderEntries();
+        updatePreview();
+      }
+
+      function deleteEducation(idx) {
+        data.education.splice(idx, 1);
+        renderEntries();
+        updatePreview();
+      }
+
+      function deleteSkill(idx) {
+        data.skills.splice(idx, 1);
+        renderEntries();
+        updatePreview();
+      }
+
+      function deleteLanguage(idx) {
+        data.languages.splice(idx, 1);
+        renderEntries();
+        updatePreview();
+      }
+
+      function updatePreview() {
+        let html = `
+        <div class="preview-name">${data.fullName || "Your Name"}</div>
+        <div class="preview-contact">
+          ${data.email ? `📧 ${data.email}<br>` : ""}
+          ${data.phone ? `📞 ${data.phone}<br>` : ""}
+          ${data.address ? `📍 ${data.address}` : ""}
+        </div>
+      `;
+
+        if (data.profile) {
+          html += `
+          <div class="preview-section">
+            <div class="preview-section-title">Profile</div>
+            <div class="preview-entry">${data.profile}</div>
+          </div>
+        `;
+        }
+
+        if (data.experience.length > 0) {
+          html += `<div class="preview-section"><div class="preview-section-title">Professional Experience</div>`;
+          data.experience.forEach((exp) => {
+            html += `
+            <div class="preview-entry">
+              <strong>${exp.title}</strong> at ${exp.company}<br>
+              <small>${exp.start} - ${exp.present ? "Present" : exp.end}</small>
+              ${exp.desc ? `<br>${exp.desc}` : ""}
+            </div>
+          `;
+          });
+          html += `</div>`;
+        }
+
+        if (data.education.length > 0) {
+          html += `<div class="preview-section"><div class="preview-section-title">Education</div>`;
+          data.education.forEach((edu) => {
+            html += `
+            <div class="preview-entry">
+              <strong>${edu.degree}</strong> ${edu.field ? `in ${edu.field}` : ""}<br>
+              <small>${edu.school}</small><br>
+              <small>${edu.start} - ${edu.present ? "Present" : edu.end}</small>
+              ${edu.gpa ? `<br>GPA: ${edu.gpa}` : ""}
+            </div>
+          `;
+          });
+          html += `</div>`;
+        }
+
+        if (data.skills.length > 0) {
+          html += `<div class="preview-section"><div class="preview-section-title">Skills</div>`;
+          data.skills.forEach((skill) => {
+            html += `<div class="preview-entry">${skill.name} <span style="font-weight: 600;">(${skill.level})</span></div>`;
+          });
+          html += `</div>`;
+        }
+
+        if (data.languages.length > 0) {
+          html += `<div class="preview-section"><div class="preview-section-title">Languages</div>`;
+          data.languages.forEach((lang) => {
+            html += `<div class="preview-entry">${lang.name} <span style="font-weight: 600;">(${lang.level})</span></div>`;
+          });
+          html += `</div>`;
+        }
+
+        document.getElementById("preview").innerHTML =
+          html ||
+          '<div style="color: #999; text-align: center; padding: 30px;">Start adding information to see the preview...</div>';
+      }
+
+      document
+        .getElementById("modalOverlay")
+        .addEventListener("click", closeModal);
+
+      updatePreview();
+      renderEntries();
+
+      if (localStorage.getItem("theme") === "dark")
+        document.body.classList.add("dark");
+    </script>
+  </body>
+</html>

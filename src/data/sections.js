@@ -1,0 +1,83 @@
+export const cvSections = [
+  { key: 'profile', icon: 'bi bi-person', titleKey: 'sec_profile', descKey: 'sec_profile_desc',
+    fields: [{ name: 'summary', type: 'textarea', labelKey: 'f_summary', required: true }] },
+  { key: 'education', icon: 'bi bi-mortarboard', titleKey: 'sec_education', descKey: 'sec_education_desc',
+    fields: [
+      { name: 'school', labelKey: 'f_school', required: true },
+      { name: 'degree', labelKey: 'f_degree', type: 'select', options: ['opt_primary','opt_middle','opt_high','opt_bachelor','opt_master','opt_phd'], required: true },
+      { name: 'start', labelKey: 'f_startDate', type: 'date', required: true },
+      { name: 'end', labelKey: 'f_endDate', type: 'date', required: false },
+      { name: 'present', labelKey: 'f_present', type: 'checkbox', required: false },
+      { name: 'gpa', labelKey: 'f_gpa', required: false },
+    ]},
+  { key: 'professional-experience', icon: 'bi bi-briefcase', titleKey: 'sec_experience', descKey: 'sec_experience_desc',
+    fields: [
+      { name: 'title', labelKey: 'f_jobTitle', required: true },
+      { name: 'company', labelKey: 'f_company', required: true },
+      { name: 'start', labelKey: 'f_startDate', type: 'date', required: true },
+      { name: 'end', labelKey: 'f_endDate', type: 'date', required: false },
+      { name: 'present', labelKey: 'f_present', type: 'checkbox', required: false },
+      { name: 'desc', labelKey: 'f_tasks', type: 'textarea', required: false },
+    ]},
+  { key: 'skills', icon: 'bi bi-star', titleKey: 'sec_skills', descKey: 'sec_skills_desc',
+    fields: [
+      { name: 'skill', labelKey: 'f_skill', required: true },
+      { name: 'level', labelKey: 'f_level', type: 'select', options: ['opt_beginner','opt_intermediate','opt_advanced'], required: true },
+    ]},
+  { key: 'languages', icon: 'bi bi-translate', titleKey: 'sec_languages', descKey: 'sec_languages_desc',
+    fields: [
+      { name: 'language', labelKey: 'f_language', required: true },
+      { name: 'level', labelKey: 'f_level', type: 'select', options: ['opt_beginner','opt_intermediate','opt_advanced','opt_fluent'], required: true },
+    ]},
+  { key: 'certificates', icon: 'bi bi-patch-check', titleKey: 'sec_certificates', descKey: 'sec_certificates_desc',
+    fields: [
+      { name: 'certificate', labelKey: 'f_certificate', required: true },
+      { name: 'issuer', labelKey: 'f_issuer', required: false },
+      { name: 'year', labelKey: 'f_year', type: 'date', required: false },
+    ]},
+  { key: 'courses', icon: 'bi bi-easel', titleKey: 'sec_courses', descKey: 'sec_courses_desc',
+    fields: [
+      { name: 'course', labelKey: 'f_course', required: true },
+      { name: 'provider', labelKey: 'f_provider', required: false },
+      { name: 'year', labelKey: 'f_year', type: 'date', required: false },
+    ]},
+  { key: 'awards', icon: 'bi bi-trophy', titleKey: 'sec_awards', descKey: 'sec_awards_desc',
+    fields: [
+      { name: 'award', labelKey: 'f_award', required: true },
+      { name: 'year', labelKey: 'f_year', type: 'date', required: false },
+    ]},
+  { key: 'interests', icon: 'bi bi-lightbulb', titleKey: 'sec_interests', descKey: 'sec_interests_desc',
+    fields: [{ name: 'interest', labelKey: 'f_interests', type: 'textarea', required: true }] },
+  { key: 'projects', icon: 'bi bi-kanban', titleKey: 'sec_projects', descKey: 'sec_projects_desc',
+    fields: [
+      { name: 'project', labelKey: 'f_project', required: true },
+      { name: 'role', labelKey: 'f_role', required: false },
+      { name: 'desc', labelKey: 'f_description', type: 'textarea', required: false },
+    ]},
+  { key: 'organisations', icon: 'bi bi-people-fill', titleKey: 'sec_organisations', descKey: 'sec_organisations_desc',
+    fields: [
+      { name: 'org', labelKey: 'f_org', required: true },
+      { name: 'role', labelKey: 'f_role', required: false },
+      { name: 'year', labelKey: 'f_year', type: 'date', required: false },
+    ]},
+  { key: 'publications', icon: 'bi bi-journals', titleKey: 'sec_publications', descKey: 'sec_publications_desc',
+    fields: [
+      { name: 'pub', labelKey: 'f_pub', required: true },
+      { name: 'desc', labelKey: 'f_description', type: 'textarea', required: false },
+      { name: 'year', labelKey: 'f_year', type: 'date', required: false },
+    ]},
+  { key: 'references', icon: 'bi bi-person-lines-fill', titleKey: 'sec_references', descKey: 'sec_references_desc',
+    fields: [
+      { name: 'ref', labelKey: 'f_ref', required: true },
+      { name: 'contact', labelKey: 'f_contact', required: false },
+    ]},
+  { key: 'declaration', icon: 'bi bi-journal-text', titleKey: 'sec_declaration', descKey: 'sec_declaration_desc',
+    fields: [
+      { name: 'declaration', labelKey: 'f_declaration', type: 'textarea', required: true },
+    ]},
+  { key: 'custom', icon: 'bi bi-plus-square', titleKey: 'sec_custom', descKey: 'sec_custom_desc',
+    fields: [
+      { name: 'title', labelKey: 'f_sectionTitle', required: true },
+      { name: 'content', labelKey: 'f_content', type: 'textarea', required: true },
+    ]},
+]
