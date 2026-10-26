@@ -67,6 +67,9 @@
       templates: base.endsWith(".html")
         ? `${app}#/templates`
         : `${base}#/templates`,
+      account: base.endsWith(".html")
+        ? `${app}#/account`
+        : `${base}#/account`,
     };
   }
 
@@ -105,6 +108,7 @@
       const activeBuilder = location.hash.includes("/builder");
       const activeTemplates =
         standaloneTemplates || location.hash.includes("/templates");
+      const activeAccount = location.hash.includes("/account");
       const t = (key) => translate(key, lang);
       const icon = theme === "dark" ? "bi-sun" : "bi-moon-stars";
 
@@ -116,9 +120,10 @@
               <span>CV<span class="site-brand-light">Master</span></span>
             </a>
             <nav class="site-nav" aria-label="${t("mainNavigation")}">
-              <a href="${links.home}" class="${!activeBuilder && !activeTemplates ? "active" : ""}">${t("home")}</a>
+              <a href="${links.home}" class="${!activeBuilder && !activeTemplates && !activeAccount ? "active" : ""}">${t("home")}</a>
               <a href="${links.builder}" class="${activeBuilder ? "active" : ""}">${t("buildCv")}</a>
               <a href="${links.templates}" class="${activeTemplates ? "active" : ""}">${t("templates")}</a>
+              <a href="${links.account}" class="${activeAccount ? "active" : ""}">${t("account")}</a>
             </nav>
             <div class="site-actions">
               <button class="site-action" type="button" data-action="language" aria-label="${t("changeLanguage")}" title="${t("changeLanguage")}">${lang === "ar" ? "EN" : "ع"}</button>
@@ -198,6 +203,7 @@
               <a href="${links.home}">${t("home")}</a>
               <a href="${links.builder}">${t("buildCv")}</a>
               <a href="${links.templates}">${t("templates")}</a>
+              <a href="${links.account}">${t("account")}</a>
             </nav>
             <span class="site-copyright">&copy; ${new Date().getFullYear()} CV Master. ${t("footerRights")}</span>
           </div>
