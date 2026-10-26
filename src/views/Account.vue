@@ -51,6 +51,20 @@
           </div>
 
           <form id="account-form" class="account-form" @submit.prevent="submitCredentials">
+            <template v-if="isSignUp">
+              <label for="account-name">{{ t("accountFullName") }}</label>
+              <input
+                id="account-name"
+                v-model.trim="fullName"
+                type="text"
+                autocomplete="name"
+                pattern="[A-Za-z\u0600-\u06FF\s]+"
+                minlength="6"
+                required
+                :placeholder="t('accountFullNamePlaceholder')"
+              />
+            </template>
+
             <label for="account-email">{{ t("accountEmail") }}</label>
             <input
               id="account-email"
@@ -69,6 +83,18 @@
               minlength="6"
               required
             />
+
+            <template v-if="isSignUp">
+              <label for="account-confirm">{{ t("accountConfirmPassword") }}</label>
+              <input
+                id="account-confirm"
+                v-model="confirmPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+              />
+            </template>
 
             <p v-if="errorMessage" class="account-error" role="alert">
               {{ errorMessage }}
@@ -151,8 +177,10 @@ import { loadCloudResume, saveCloudResume } from "../services/resumeCloud";
 const { t } = useI18n();
 const auth = useAuthStore();
 const resume = useResumeStore();
+const fullName = ref("");
 const email = ref("");
 const password = ref("");
+const confirmPassword = ref("");
 const isSignUp = ref(false);
 const initializing = ref(true);
 const busy = ref(false);
@@ -189,11 +217,31 @@ function toggleMode() {
 
 async function submitCredentials() {
   clearMessages();
+
+  if (isSignUp.value) {
+    if (!fullName.value.trim()) {
+      errorMessage.value = t("accountFullNameRequired");
+      return;
+    }
+    if (fullName.value.trim().split(/\s+/).length < 3) {
+      errorMessage.value = t("accountFullNameRequired");
+      return;
+    }
+    if (password.value !== confirmPassword.value) {
+      errorMessage.value = t("accountPasswordMismatch");
+      return;
+    }
+  }
+
   busy.value = true;
 
   try {
     if (isSignUp.value) {
-      const { session } = await auth.signUp(email.value, password.value);
+      const { session } = await auth.signUp(
+        email.value,
+        password.value,
+        fullName.value.trim(),
+      );
       statusMessage.value = t(
         session ? "cloudAccountReady" : "cloudSignupCheckEmail",
       );
@@ -269,7 +317,7 @@ async function signOut() {
 }
 
 .account-visual {
-  background: linear-gradient(145deg, #5746d8 0%, #7c3aed 55%, #ec4899 100%);
+  background: linear-gradient(145deg, #6366f1 0%, #ec4899 55%, #ec4899 100%);
   color: #fff;
   padding: clamp(28px, 5vw, 56px);
   display: flex;
@@ -365,7 +413,7 @@ async function signOut() {
 
 .account-tabs button.active {
   background: #fff;
-  color: #5746d8;
+  color: #6366f1;
   box-shadow: 0 6px 16px rgba(87, 70, 216, 0.12);
 }
 
@@ -410,7 +458,7 @@ async function signOut() {
 }
 
 .account-primary-button {
-  background: linear-gradient(135deg, #5746d8, #7c3aed);
+  background: linear-gradient(135deg, #6366f1, #ec4899);
   color: #fff;
 }
 
@@ -430,7 +478,7 @@ async function signOut() {
   padding: 8px 0;
   border: 0;
   background: none;
-  color: #5746d8;
+  color: #6366f1;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -477,7 +525,7 @@ async function signOut() {
 }
 
 :global(body.dark) .account-visual {
-  background: linear-gradient(145deg, #312e81 0%, #4c1d95 55%, #9d174d 100%);
+  background: linear-gradient(145deg, #312e81 0%, #4338ca 55%, #be185d 100%);
 }
 
 :global(body.dark) .account-main {
