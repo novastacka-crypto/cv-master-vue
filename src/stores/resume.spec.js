@@ -11,7 +11,7 @@ describe('useResumeStore', () => {
   it('initializes with defaults', () => {
     const store = useResumeStore()
     expect(store.fullName).toBe('')
-    expect(store.accentColor).toBe('#7c3aed')
+    expect(store.accentColor).toBe('#176b5b')
     expect(store.theme).toBe('light')
     expect(store.lang).toBe('en')
   })

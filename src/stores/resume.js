@@ -18,7 +18,7 @@ export const useResumeStore = defineStore('resume', () => {
   const portfolio = ref(load('cv_portfolio', ''))
   const github = ref(load('cv_github', ''))
   const photo = ref(load('cv_photo', ''))
-  const accentColor = ref(localStorage.getItem('cvAccentColor') || '#7c3aed')
+  const accentColor = ref(localStorage.getItem('cvAccentColor') || '#176b5b')
   const theme = ref(localStorage.getItem('theme') || 'light')
   const lang = ref(localStorage.getItem('lang') || 'en')
   const storedResumeData = load('cv_resumeData', {})
@@ -129,8 +129,8 @@ export const useResumeStore = defineStore('resume', () => {
     portfolio.value = ''
     github.value = ''
     photo.value = ''
-    accentColor.value = '#7c3aed'
-    localStorage.setItem('cvAccentColor', '#7c3aed')
+    accentColor.value = '#176b5b'
+    localStorage.setItem('cvAccentColor', '#176b5b')
     resumeData.value = {}
     localStorage.removeItem('cv_resumeData')
   }

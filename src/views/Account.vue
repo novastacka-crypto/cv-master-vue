@@ -317,7 +317,7 @@ async function signOut() {
 }
 
 .account-visual {
-  background: linear-gradient(145deg, #7c3aed 0%, #06b6d4 55%, #06b6d4 100%);
+  background: linear-gradient(145deg, #176b5b 0%, #df7659 55%, #df7659 100%);
   color: #fff;
   padding: clamp(28px, 5vw, 56px);
   display: flex;
@@ -413,7 +413,7 @@ async function signOut() {
 
 .account-tabs button.active {
   background: #fff;
-  color: #7c3aed;
+  color: #176b5b;
   box-shadow: 0 6px 16px rgba(87, 70, 216, 0.12);
 }
 
@@ -458,7 +458,7 @@ async function signOut() {
 }
 
 .account-primary-button {
-  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  background: linear-gradient(135deg, #176b5b, #df7659);
   color: #fff;
 }
 
@@ -478,7 +478,7 @@ async function signOut() {
   padding: 8px 0;
   border: 0;
   background: none;
-  color: #7c3aed;
+  color: #176b5b;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -501,7 +501,7 @@ async function signOut() {
 .account-notice,
 .account-status {
   background: #f5f3ff;
-  color: #6d28d9;
+  color: #145d50;
 }
 
 .account-error {
@@ -525,7 +525,7 @@ async function signOut() {
 }
 
 :global(body.dark) .account-visual {
-  background: linear-gradient(145deg, #5b21b6 0%, #4338ca 55%, #be185d 100%);
+  background: linear-gradient(145deg, #105348 0%, #4338ca 55%, #be185d 100%);
 }
 
 :global(body.dark) .account-main {
@@ -555,7 +555,7 @@ async function signOut() {
 
 :global(body.dark) .account-tabs button.active {
   background: #171923;
-  color: #ddd6fe;
+  color: #8bd2c6;
 }
 
 :global(body.dark) .account-notice,
