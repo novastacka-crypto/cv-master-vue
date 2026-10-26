@@ -317,7 +317,7 @@ async function signOut() {
 }
 
 .account-visual {
-  background: linear-gradient(145deg, #6366f1 0%, #ec4899 55%, #ec4899 100%);
+  background: linear-gradient(145deg, #176b5b 0%, #df7659 55%, #df7659 100%);
   color: #fff;
   padding: clamp(28px, 5vw, 56px);
   display: flex;
@@ -396,7 +396,7 @@ async function signOut() {
   gap: 8px;
   padding: 6px;
   border-radius: 999px;
-  background: #f1f5f9;
+  background: #eef3f0;
   margin: 20px 0 16px;
 }
 
@@ -413,7 +413,7 @@ async function signOut() {
 
 .account-tabs button.active {
   background: #fff;
-  color: #6366f1;
+  color: #176b5b;
   box-shadow: 0 6px 16px rgba(87, 70, 216, 0.12);
 }
 
@@ -458,7 +458,7 @@ async function signOut() {
 }
 
 .account-primary-button {
-  background: linear-gradient(135deg, #6366f1, #ec4899);
+  background: linear-gradient(135deg, #176b5b, #df7659);
   color: #fff;
 }
 
@@ -478,7 +478,7 @@ async function signOut() {
   padding: 8px 0;
   border: 0;
   background: none;
-  color: #6366f1;
+  color: #176b5b;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
@@ -500,8 +500,8 @@ async function signOut() {
 
 .account-notice,
 .account-status {
-  background: #eef2ff;
-  color: #3730a3;
+  background: #e6f1ec;
+  color: #145d50;
 }
 
 .account-error {
@@ -525,7 +525,7 @@ async function signOut() {
 }
 
 :global(body.dark) .account-visual {
-  background: linear-gradient(145deg, #312e81 0%, #4338ca 55%, #be185d 100%);
+  background: linear-gradient(145deg, #105348 0%, #4338ca 55%, #be185d 100%);
 }
 
 :global(body.dark) .account-main {
@@ -536,13 +536,13 @@ async function signOut() {
 :global(body.dark) .account-form label,
 :global(body.dark) .account-secondary-button,
 :global(body.dark) .account-back-link {
-  color: #eef2ff;
+  color: #e6f1ec;
 }
 
 :global(body.dark) .account-form input {
   border-color: #44465a;
   background: #202230;
-  color: #eef2ff;
+  color: #e6f1ec;
 }
 
 :global(body.dark) .account-tabs {
@@ -555,13 +555,13 @@ async function signOut() {
 
 :global(body.dark) .account-tabs button.active {
   background: #171923;
-  color: #c4b5fd;
+  color: #8bd2c6;
 }
 
 :global(body.dark) .account-notice,
 :global(body.dark) .account-status {
-  background: #282847;
-  color: #dbeafe;
+  background: #1b302b;
+  color: #d5e8df;
 }
 
 @media (max-width: 860px) {
