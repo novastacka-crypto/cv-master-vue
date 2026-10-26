@@ -5,12 +5,12 @@
 }
 
 :root {
-  --primary: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
-  --accent: #ec4899;
-  --accent-light: #f472b6;
-  --accent-dark: #be185d;
+  --primary: #176b5b;
+  --primary-dark: #105348;
+  --primary-light: #4b9a87;
+  --accent: #df7659;
+  --accent-light: #f3aa8d;
+  --accent-dark: #b8563d;
   --success: #14b8a6;
   --success-light: #2dd4bf;
   --bg-light: #f8fafc;
@@ -462,7 +462,7 @@ body.dark .cv-add-section {
 .cv-import-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(236, 72, 153, 0.35);
-  background: linear-gradient(135deg, #e11d48 0%, #ec4899 100%);
+  background: linear-gradient(135deg, #e11d48 0%, #df7659 100%);
 }
 
 /* ===== CV GRID ===== */
@@ -1732,7 +1732,7 @@ body.dark .date-input {
 
 .date-input:focus {
   outline: none;
-  border-color: #6366f1;
+  border-color: #176b5b;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
@@ -1765,27 +1765,27 @@ body.dark .format-btn {
 
 .format-btn:hover {
   background: #e5e7eb;
-  border-color: #6366f1;
-  color: #6366f1;
+  border-color: #176b5b;
+  color: #176b5b;
   transform: translateY(-1px);
 }
 
 body.dark .format-btn:hover {
   background: rgba(99, 102, 241, 0.1);
-  border-color: #6366f1;
-  color: #818cf8;
+  border-color: #176b5b;
+  color: #4b9a87;
 }
 
 .format-btn.active {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  border-color: #6366f1;
+  background: linear-gradient(135deg, #176b5b 0%, #105348 100%);
+  border-color: #176b5b;
   color: white;
   box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 body.dark .format-btn.active {
-  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  border-color: #6366f1;
+  background: linear-gradient(135deg, #176b5b 0%, #105348 100%);
+  border-color: #176b5b;
   color: white;
 }
 
@@ -1819,7 +1819,7 @@ body.dark .format-btn.active {
 .delete-btn {
   background: none;
   border: none;
-  color: #6366f1;
+  color: #176b5b;
   cursor: pointer;
   font-size: 1rem;
   padding: 6px 12px;
@@ -1833,7 +1833,7 @@ body.dark .format-btn.active {
 
 .edit-btn:hover {
   background: rgba(99, 102, 241, 0.1);
-  color: #4f46e5;
+  color: #105348;
   transform: translateY(-2px);
 }
 
@@ -1852,7 +1852,7 @@ body.dark .cv-preview-item:hover {
 }
 
 body.dark .edit-btn {
-  color: #818cf8;
+  color: #4b9a87;
 }
 
 body.dark .delete-btn {

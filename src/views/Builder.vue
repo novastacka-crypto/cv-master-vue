@@ -369,6 +369,9 @@ const colors = [
   "#854d0e",
   "#713f12",
   "#422006",
+  "#176b5b",
+  "#105348",
+  "#4b9a87",
   "#22c55e",
   "#4ade80",
   "#86efac",
@@ -685,14 +688,14 @@ async function downloadPDF() {
   height: 46px;
   flex: 0 0 46px;
   place-items: center;
-  border: 1px solid rgba(99, 102, 241, 0.14);
+  border: 1px solid rgba(23, 107, 91, 0.14);
   border-radius: 14px;
   background: linear-gradient(
     145deg,
-    rgba(99, 102, 241, 0.14),
-    rgba(236, 72, 153, 0.1)
+    rgba(23, 107, 91, 0.14),
+    rgba(223, 118, 89, 0.1)
   );
-  color: #4f46e5;
+  color: #105348;
   font-size: 1.35rem;
 }
 
@@ -744,7 +747,7 @@ async function downloadPDF() {
 }
 
 .user-info-field > input:not([type="file"]):focus {
-  border-color: #6366f1;
+  border-color: #176b5b;
   background: #fff;
   box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.13);
 }
@@ -799,7 +802,7 @@ async function downloadPDF() {
 
 .photo-upload-box:hover {
   transform: translateY(-1px);
-  border-color: #818cf8;
+  border-color: #4b9a87;
   background: rgba(224, 231, 255, 0.65);
 }
 
@@ -853,7 +856,7 @@ body.dark .user-info-section {
   background:
     radial-gradient(
       circle at top right,
-      rgba(99, 102, 241, 0.12),
+      rgba(23, 107, 91, 0.12),
       transparent 36%
     ),
     rgba(15, 23, 42, 0.72);
@@ -882,13 +885,13 @@ body.dark .user-info-field > input:not([type="file"]) {
 }
 
 body.dark .user-info-field > input:not([type="file"]):focus {
-  border-color: #818cf8;
+  border-color: #4b9a87;
   background: #111c33;
   box-shadow: 0 0 0 4px rgba(129, 140, 248, 0.16);
 }
 
 body.dark .photo-upload-box {
-  border-color: #4f46e5;
+  border-color: #105348;
   background: rgba(49, 46, 129, 0.18);
   color: #c7d2fe;
 }
