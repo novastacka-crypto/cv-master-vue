@@ -105,7 +105,7 @@ test("accent colors can be selected with arrow keys", async ({ page }) => {
   await page.getByRole("button", { name: "Colors" }).click();
 
   const selectedColor = page.getByRole("radio", {
-    name: "Select color #176b5b",
+    name: "Select color #7c3aed",
   });
   await selectedColor.focus();
   await page.keyboard.press("ArrowRight");

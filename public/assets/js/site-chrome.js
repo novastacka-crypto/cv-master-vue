@@ -2,35 +2,35 @@
   const stylesheet = `
     cv-site-header, cv-site-footer { display: block; }
     cv-site-header { position: sticky; top: 0; z-index: 1000; }
-    .site-header { border-bottom: 1px solid #dce5e0; background: rgba(250,252,250,.96); box-shadow: 0 3px 14px rgba(27,54,45,.04); backdrop-filter: blur(12px); }
+    .site-header { border-bottom: 1px solid #dce5e0; background: rgba(255,255,255,.6); backdrop-filter: blur(18px); box-shadow: 0 3px 14px rgba(27,54,45,.04); backdrop-filter: blur(12px); }
     .site-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1320px; min-height: 68px; margin: 0 auto; padding: 10px 28px; }
-    .site-brand { display: inline-flex; align-items: center; gap: 10px; color: #203b34; font: 800 1.2rem/1.2 "DM Sans", "Noto Sans Arabic", sans-serif; text-decoration: none; white-space: nowrap; }
-    .site-brand-mark { display: inline-grid; width: 38px; height: 38px; place-items: center; border-radius: 8px; background: #176b5b; color: #fff; font-size: 1.1rem; }
-    .site-brand-light { color: #176b5b; }
+    .site-brand { display: inline-flex; align-items: center; gap: 10px; color: #1e1b4b; font: 800 1.2rem/1.2 "DM Sans", "Noto Sans Arabic", sans-serif; text-decoration: none; white-space: nowrap; }
+    .site-brand-mark { display: inline-grid; width: 38px; height: 38px; place-items: center; border-radius: 8px; background: #7c3aed; color: #fff; font-size: 1.1rem; }
+    .site-brand-light { color: #7c3aed; }
     .site-nav { display: flex; flex: 1; align-items: center; justify-content: center; gap: 6px; }
-    .site-nav a { padding: 8px 12px; border-radius: 6px; color: #52645c; font: 600 .9rem/1.4 "DM Sans", "Noto Sans Arabic", sans-serif; text-decoration: none; }
-    .site-nav a:hover, .site-nav a.active { background: #e5f1ec; color: #145d50; }
+    .site-nav a { padding: 8px 12px; border-radius: 6px; color: #6b7280; font: 600 .9rem/1.4 "DM Sans", "Noto Sans Arabic", sans-serif; text-decoration: none; }
+    .site-nav a:hover, .site-nav a.active { background: #f5f3ff; color: #6d28d9; }
     .site-actions { display: flex; align-items: center; gap: 8px; }
-    .site-action { display: inline-grid; width: 38px; height: 38px; place-items: center; padding: 0; border: 1px solid #dce5e0; border-radius: 7px; background: #fff; color: #52645c; font: 700 .9rem "DM Sans", "Noto Sans Arabic", sans-serif; cursor: pointer; }
-    .site-action:hover { border-color: #9fc6b8; background: #e9f3ee; color: #145d50; }
-    .site-footer { border-top: 1px solid #dce5e0; background: #edf3ef; color: #65736e; }
+    .site-action { display: inline-grid; width: 38px; height: 38px; place-items: center; padding: 0; border: 1px solid #dce5e0; border-radius: 7px; background: #fff; color: #6b7280; font: 700 .9rem "DM Sans", "Noto Sans Arabic", sans-serif; cursor: pointer; }
+    .site-action:hover { border-color: #c4b5fd; background: #e9f3ee; color: #6d28d9; }
+    .site-footer { border-top: 1px solid #dce5e0; background: #f5f3ff; color: #65736e; }
     .site-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1320px; margin: 0 auto; padding: 20px 28px; }
     .site-footer .site-brand { font-size: 1rem; }
     .site-footer .site-brand-mark { width: 30px; height: 30px; font-size: .9rem; }
     .site-footer-nav { display: flex; flex-wrap: wrap; gap: 18px; }
-    .site-footer-nav a { color: #52645c; font-size: .86rem; text-decoration: none; }
-    .site-footer-nav a:hover { color: #176b5b; }
+    .site-footer-nav a { color: #6b7280; font-size: .86rem; text-decoration: none; }
+    .site-footer-nav a:hover { color: #7c3aed; }
     .site-copyright { color: #65736e; font-size: .8rem; }
-    body.dark .site-header { border-color: rgba(220,237,228,.1); background: rgba(21,29,26,.96); }
+    body.dark .site-header { border-color: rgba(220,237,228,.1); background: rgba(30,27,75,.6); backdrop-filter: blur(18px); }
     body.dark .site-brand { color: #eef5f1; }
-    body.dark .site-brand-light { color: #81c7b2; }
+    body.dark .site-brand-light { color: #c4b5fd; }
     body.dark .site-nav a { color: #c4d3cc; }
-    body.dark .site-nav a:hover, body.dark .site-nav a.active { background: rgba(91,174,148,.16); color: #a3d8c6; }
-    body.dark .site-action { border-color: rgba(220,237,228,.16); background: #202b26; color: #d4e3dc; }
-    body.dark .site-action:hover { background: #294237; color: #fff; }
-    body.dark .site-footer { border-color: rgba(220,237,228,.1); background: #111815; }
+    body.dark .site-nav a:hover, body.dark .site-nav a.active { background: rgba(91,174,148,.16); color: #ddd6fe; }
+    body.dark .site-action { border-color: rgba(220,237,228,.16); background: #2e1065; color: #d4e3dc; }
+    body.dark .site-action:hover { background: #4c1d95; color: #fff; }
+    body.dark .site-footer { border-color: rgba(220,237,228,.1); background: #1e1b4b; }
     body.dark .site-footer-nav a, body.dark .site-copyright { color: #adbbb4; }
-    body.dark .site-footer-nav a:hover { color: #a3d8c6; }
+    body.dark .site-footer-nav a:hover { color: #ddd6fe; }
     [dir="rtl"] .site-nav, [dir="rtl"] .site-footer-nav { direction: rtl; }
     @media (max-width: 680px) {
       .site-header-inner { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }

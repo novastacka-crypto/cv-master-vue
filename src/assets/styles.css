@@ -5043,25 +5043,25 @@ body.dark .builder-page .cv-preview-badge {
   }
 }
 
-/* Unified interface refresh */
+/* Unified interface refresh (Glassmorphism) */
 :root {
-  --primary: #176b5b;
-  --primary-dark: #105348;
-  --primary-light: #4b9a87;
-  --accent: #df7659;
-  --accent-light: #f3aa8d;
-  --accent-dark: #b8563d;
-  --success: #176b5b;
-  --success-light: #328675;
-  --bg-light: #f4f7f5;
-  --bg-lighter: #eaf0ed;
-  --text-dark: #202d2a;
-  --text-muted: #65736e;
-  --border-light: #dce5e0;
-  --shadow-sm: 0 2px 8px rgba(27, 54, 45, 0.04);
-  --shadow-md: 0 10px 28px rgba(27, 54, 45, 0.08);
-  --shadow-lg: 0 22px 56px rgba(27, 54, 45, 0.12);
-  --shadow-xl: 0 28px 72px rgba(17, 36, 30, 0.2);
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --primary-light: #a78bfa;
+  --accent: #06b6d4;
+  --accent-light: #67e8f9;
+  --accent-dark: #0e7490;
+  --success: #10b981;
+  --success-light: #34d399;
+  --bg-light: #f5f3ff;
+  --bg-lighter: #ede9fe;
+  --text-dark: #1e1b4b;
+  --text-muted: #6b7280;
+  --border-light: #e0e7ff;
+  --shadow-sm: 0 2px 8px rgba(124, 58, 237, 0.06);
+  --shadow-md: 0 10px 30px rgba(124, 58, 237, 0.1);
+  --shadow-lg: 0 24px 60px rgba(124, 58, 237, 0.14);
+  --shadow-xl: 0 32px 80px rgba(124, 58, 237, 0.2);
 }
 
 html {
@@ -5905,3 +5905,26 @@ body.dark .footer-social a {
 .cv-card { transition: transform .2s ease, box-shadow .2s ease; }
 .cv-card:hover { transform: translateY(-4px); }
 
+
+
+/* ===== Glassmorphism utilities ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.12);
+}
+body.dark .glass-card {
+  background: rgba(30, 27, 75, 0.55);
+  border-color: rgba(167, 139, 250, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+.glass-panel {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+}
